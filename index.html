@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos To Cash Systems</title>
+    <style>
+        /* --- CSS Styles --- */
+        :root {
+            /* Colors derived from the logo */
+            --bg-color: #0a0a0a; /* Very dark background */
+            --text-color: #e0e0e0; /* Off-white text */
+            --accent-blue: #007bff;
+            --accent-green: #28a745;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Smooth transition for direction changes */
+            transition: all 0.3s ease;
+        }
+
+        /* Container for main content to center it nicely */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            text-align: center; /* Default center alignment */
+            flex: 1; /* Takes available space, pushing footer down */
+        }
+
+        /* Language Toggle Button Style */
+        .lang-switch-container {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1rem;
+        }
+
+        #lang-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        #lang-toggle:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Logo Style */
+        .logo-img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        /* Typography Styles */
+        h1.main-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            /* Gradient text effect similar to logo */
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2.section-title {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.mission-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* --- Dual Language Logic --- */
+
+        /* By default (English active), hide Hebrew elements */
+        :lang(en) .lang-he {
+            display: none;
+        }
+
+        /* When Hebrew is active, hide English elements */
+        :lang(he) .lang-en {
+            display: none;
+        }
+
+        /* RTL specific adjustments if needed */
+        :lang(he) body {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container lang-switch-container">
+        <button id="lang-toggle" onclick="toggleLanguage()">עברית</button>
+    </div>
+
+    <div class="container">
+        <img src="logo.png" alt="Chaos To Cash Systems Logo" class="logo-img">
+
+        <h1 class="main-title">
+            <span class="lang-en">Chaos To Cash Systems</span>
+            <span class="lang-he">מכאוס למזומנים מערכות</span>
+        </h1>
+
+        <main>
+            <h2 class="section-title">
+                <span class="lang-en">Our Mission</span>
+                <span class="lang-he">המשימה שלנו</span>
+            </h2>
+
+            <p class="mission-text">
+                <span class="lang-en">Helping small businesses removing non-productive load, enhancing and automating customer relationships that results in laser focus value providing, leading to growth income.</span>
+                <span class="lang-he">מתן שרות לעסקים קטנים ובינוניים בהורדת עומס לא יצרני, שיפור אוטומציה וקשרי לקוחות, מכך מיקוד לייזר במתן ערך המוביל לצמיחה והכנסה.</span>
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            <span class="lang-en">Contact info:</span>
+            <span class="lang-he">פרטי קשר:</span>
+            <a href="mailto:info@chaostocashsys.com">info@chaostocashsys.com</a>
+        </p>
+    </footer>
+
+
+    <script>
+        function toggleLanguage() {
+            const htmlTag = document.documentElement;
+            const toggleBtn = document.getElementById('lang-toggle');
+            
+            // Check current language
+            const currentLang = htmlTag.getAttribute('lang');
+
+            if (currentLang === 'en') {
+                // Switch to Hebrew
+                htmlTag.setAttribute('lang', 'he');
+                htmlTag.setAttribute('dir', 'rtl');
+                toggleBtn.textContent = 'English'; // Change button button to show option to go back to English
+            } else {
+                // Switch back to English
+                htmlTag.setAttribute('lang', 'en');
+                htmlTag.setAttribute('dir', 'ltr');
+                toggleBtn.textContent = 'עברית'; // Change button to show Hebrew option
+            }
+        }
+    </script>
+
+</body>
+</html>
